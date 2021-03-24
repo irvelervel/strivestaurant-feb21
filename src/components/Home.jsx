@@ -2,6 +2,7 @@ import React from 'react'
 import { Carousel, Col, Container, Row } from 'react-bootstrap'
 import items from '../data/menu.json'
 import DishComments from './DishComments'
+import ReservationForm from './ReservationForm'
 
 // functional components are great to work with and they can use the props
 // but if we want to use the state, we need a CLASS BASED component
@@ -52,6 +53,11 @@ class Home extends React.Component {
                                 )
                             }
                         </Carousel>
+                    </Col>
+                </Row>
+                <Row className="justify-content-center mt-5">
+                    <Col xs={8}>
+                        <ReservationForm />
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-5">
