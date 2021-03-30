@@ -66,6 +66,7 @@ class ReservationForm extends React.Component {
     render() {
         return (
             <>
+
                 <h2>Book your table NOW!!</h2>
                 <Form onSubmit={this.submitData}>
                     <Form.Group>

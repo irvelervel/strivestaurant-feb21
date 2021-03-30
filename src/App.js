@@ -6,8 +6,8 @@ import Home from './components/Home'
 function App() {
   return (
     <div>
-      <NavBar title="Strivestaurant" links={['Home', 'Contacts', 'Location', 'blabla', 'Flynn']} />
-      <Home />
+      <NavBar title="Strivestaurant" links={['Home', 'Contacts', 'Location', 'blabla', 'Alfredo']} />
+      <Home newTitle='Amatriciana' NewPayoff="Paid"/>
     </div>
   )
 }

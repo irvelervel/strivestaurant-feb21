@@ -1,7 +1,8 @@
 import React from 'react'
-import { Carousel, Col, Container, Row } from 'react-bootstrap'
+import { Carousel, Col, Container, Row, Alert } from 'react-bootstrap'
 import items from '../data/menu.json'
 import DishComments from './DishComments'
+import FakeAlert from './FakeAlert'
 import ReservationForm from './ReservationForm'
 import Reservations from './Reservations'
 
@@ -12,6 +13,7 @@ class Home extends React.Component {
 
     state = {
         selectedDish: items[0]
+
     }
 
     // constructor(props) {
@@ -27,8 +29,9 @@ class Home extends React.Component {
             <Container>
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={6}>
-                        <h1>Welcome to Strivestaurant</h1>
-                        <p>The best dishes you can find on the web!</p>
+                        {this.state.selectedDish ?
+                            <h1>{this.props.newTitle}</h1> : <h1>Welcome to Strivestaurant</h1>}
+                        {this.state.selectedDish ? <p>{this.props.NewPayoff}</p> : <p>The best dishes you can find on the web!</p>}
                         <Carousel
                         // onSlide={(e) => this.setState({
                         //     selectedDish: items[e]
@@ -58,17 +61,20 @@ class Home extends React.Component {
                 </Row>
                 <Row className="justify-content-center mt-5">
                     <Col xs={8}>
-                        <Reservations />
+                        <Reservations h3="This is Reservation" />
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-5">
                     <Col xs={8}>
-                        <ReservationForm />
+                        {!this.state.selectedDish.comments[0].rating === 5 ? <ReservationForm /> : <FakeAlert />}
+
+
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-5">
                     <Col xs={8}>
-                        <DishComments selectedDish={this.state.selectedDish} />
+
+                        {this.state.selectedDish.name !== "Amatriciana" && <DishComments selectedDish={this.state.selectedDish} />}
                     </Col>
                 </Row>
             </Container>

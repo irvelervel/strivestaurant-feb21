@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, ListGroup, Spinner } from 'react-bootstrap'
+import { Alert, Row, Col, Spinner, Container, Card } from 'react-bootstrap'
 import { format, parseISO } from 'date-fns'
 
 // render will be called ONCE after the constructor (for displaying the initial state of your component)
@@ -65,7 +65,7 @@ class Reservations extends React.Component {
 
         return (
             <>
-                <h3>RESERVATIONS</h3>
+                <h3>{this.props.h3}</h3>
                 <div className="my-3">
                     {/* here we'll put our map */}
                     {this.state.isLoading && (<Spinner animation="border" variant="success" />)}
@@ -87,13 +87,17 @@ class Reservations extends React.Component {
                     )}
 
                     {this.state.reservations.map(res => (
-                        <ListGroup key={res._id}>
-                            <ListGroup.Item>
-                                <p>From: {res.name}, for {res.numberOfPersons} people,</p>
-                                {/* <p>at {res.dateTime}</p> */}
-                                <p>at {format(parseISO(res.dateTime), 'yyyy-MMM-dd | HH:mm')}</p>
-                            </ListGroup.Item>
-                        </ListGroup>
+                        <Container>
+                            <Row key={res._id}>
+                                <Col xs={12} md={3} lg={2}>
+                                    <Card>
+                                        <p>From: {res.name}, for {res.numberOfPersons} people,</p>
+                                        {/* <p>at {res.dateTime}</p> */}
+                                        <p>at {format(parseISO(res.dateTime), 'yyyy-MMM-dd | HH:mm')}</p>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </Container>
                     ))}
                 </div>
             </>
