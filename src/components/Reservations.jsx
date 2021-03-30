@@ -85,20 +85,21 @@ class Reservations extends React.Component {
                             </p>
                         </Alert>
                     )}
+                    <Container>
+                        {this.state.reservations.map(res => (
 
-                    {this.state.reservations.map(res => (
-                        <Container>
                             <Row key={res._id}>
-                                <Col xs={12} md={3} lg={2}>
-                                    <Card>
+                                <Col>
+                                    <Card className="col col-sm-12 col-md-3">
                                         <p>From: {res.name}, for {res.numberOfPersons} people,</p>
                                         {/* <p>at {res.dateTime}</p> */}
                                         <p>at {format(parseISO(res.dateTime), 'yyyy-MMM-dd | HH:mm')}</p>
                                     </Card>
                                 </Col>
                             </Row>
-                        </Container>
-                    ))}
+
+                        ))}
+                    </Container>
                 </div>
             </>
         )
