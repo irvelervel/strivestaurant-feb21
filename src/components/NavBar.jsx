@@ -9,20 +9,27 @@ const NavBar = (props) => (
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-                {/* {
-                    props.links.map(link => <Nav.Link key={link} href={'#' + link.toLowerCase()}>{link}</Nav.Link>)
-                } */}
-                <Link className={props.location.pathname === '/' ? 'nav-link active' : 'nav-link'} to="/">
+                {props.links.map(link => (
+                    <Link
+                        className={link === 'Home' && props.location.pathname === '/' ? 'nav-link active' : props.location.pathname === '/' + link.toLowerCase() ? 'nav-link active' : 'nav-link'}
+                        to={link === 'Home' ? '/' : `/${link.toLowerCase()}`} >
+                        {link}
+                    </Link>
+                ))}
+                {/* <Link className={props.location.pathname === '/' ? 'nav-link active' : 'nav-link'} to="/">
                     Homepage
+                </Link>
+                <Link className={props.location.pathname === '/menu' ? 'nav-link active' : 'nav-link'} to="/menu">
+                    Menu
                 </Link>
                 <Link
                     className={props.location.pathname === '/reservations' ? 'nav-link active' : 'nav-link'}
                     to="/reservations">
                     Reservations
-                </Link>
+                </Link> */}
             </Nav>
         </Navbar.Collapse>
-    </Navbar>
+    </Navbar >
 )
 
 export default withRouter(NavBar)

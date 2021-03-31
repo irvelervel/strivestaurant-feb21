@@ -5,6 +5,7 @@ import Home from './components/Home'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Reservations from './components/Reservations'
 import DishDetails from './components/DishDetails'
+import Menu from './components/Menu'
 
 // Router will be the main wrapper for your Routes
 
@@ -12,7 +13,7 @@ function App() {
   return (
     <div>
       <Router>
-        <NavBar title="Strivestaurant" links={['Home', 'Contacts', 'Location', 'blabla', 'Flynn']} />
+        <NavBar title="Strivestaurant" links={['Home', 'Menu', 'Reservations']} />
         <Route path="/" exact component={Home} />
         {/* / is called root */}
         {/* you can use the render prop to pass you own props to the component inside the route */}
@@ -21,6 +22,8 @@ function App() {
         {/* and then you can spread them over your component */}
         <Route path="/reservations" exact render={(routerProps) => <Reservations {...routerProps} title="Stefano" />} />
         <Route path="/details/:dishId" component={DishDetails} />
+        {/* this is a dynamic route */}
+        <Route path="/menu" component={Menu} />
         {/* HOC High order component */}
       </Router>
     </div>
